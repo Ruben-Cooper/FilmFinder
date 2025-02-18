@@ -76,6 +76,10 @@ Note: The SQL dump provided is movie information web scraped from IMDB.
     ```
     node ./bin/www
     ```
+
+4. **Backend Self-Signed Key:**
+
+    The backend uses a generic self-signed key for SSL. If you wish to use your own SSL certificates, replace the default key and certificate files located in the backend directory.
     
 
 ### Frontend
