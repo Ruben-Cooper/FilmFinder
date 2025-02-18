@@ -1,70 +1,151 @@
-# Getting Started with Create React App
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# 🎬 FilmFinder: Full-Stack Movie Search App
 
-## Available Scripts
+FilmFinder is a full-stack web application that allows users to search for movies, view details, and manage their favorite films. Built using React for the frontend and Node.js with Express.js for the backend, it features JWT authentication and a MySQL database. The application is designed with a RESTful API and has been deployed on an Azure VM with a production-ready configuration.
 
-In the project directory, you can run:
+Note: The SQL dump provided is movie information web scraped from IMDB.
 
-### `npm start`
+## Features
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+-   **Movie Search:** Search for movies by title and/or release year.
+    
+-   **Infinite Scrolling:** Seamlessly load more movies as you scroll.
+    
+-   **Movie Details:** View detailed information about each movie.
+    
+-   **User Authentication:** Secure registration and login using JWT.
+    
+-   **Responsive Design:** Optimized for desktop and mobile devices.
+    
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+## Dependencies
 
-### `npm test`
+-   **Frontend:** Listed in the `package.json` file in the root directory.
+    
+-   **Backend:** Listed in the `package.json` file in the `backend` directory.
+    
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## Installation
 
-### `npm run build`
+1.  **Clone the repository:**
+    
+    ```
+    git clone https://github.com/your-username/filmfinder.git
+    ```
+    
+2.  **Install dependencies for both frontend and backend:**
+    
+    ```
+    # Frontend
+    npm install
+    
+    # Backend
+    cd backend
+    npm install
+    ```
+    
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## Configuration
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+### Backend
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+1.  **Set up your MySQL database:**
+    
+    -   Create a new database named `filmfinder`.
+        
+    -   Import the provided SQL dump or set up the database tables as specified in the backend task sheet.
+        
+2.  **Configure environment variables:**
+    
+    -   Create a `.env` file in the `backend` folder with the following variables:
+        
+        env
+        
+        ```
+        DB_HOST=your_database_host
+        DB_USER=your_database_user
+        DB_PASSWORD=your_database_password
+        DB_NAME=filmfinder
+        JWT_SECRET=your_jwt_secret
+        
+        ```
+        
+3.  **Start the backend server:**
+    
+    
+    ```
+    node ./bin/www
+    ```
+    
 
-### `npm run eject`
+### Frontend
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+1.  **Update the API URL:**
+    
+    -   In your frontend code (e.g., in `src/utils/api.js`), update the API URLs to point to your backend server. For example:
+        
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+        
+        ```
+        const API_URL = process.env.REACT_APP_API_URL || 'http://localhost:3000';
+        ```
+        
+    -   Replace `'http://localhost:3000'` with your backend server's URL if it's deployed remotely.
+        
+2.  **Start the frontend server:**
+    
+    ```
+    npm start
+    ```
+    
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+## Usage
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+1.  **Register or log in to your account.**
+    
+2.  **Search for movies by title and/or release year.**
+    
+3.  **View detailed information about each movie.**
+    
+4.  **Enjoy infinite scrolling through the movie list.**
+    
 
-## Learn More
+## Deployment
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+### Backend Deployment on Azure VM
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+1.  **Set up the Azure VM:**
+    
+    -   Install Node.js and MySQL on the VM.
+        
+    -   Clone the repository and navigate to the backend folder.
+        
+    -   Install dependencies and set up the environment variables as described in the configuration section.
+        
+2.  **Configure Firewall and Ports:**
+    
+    -   Open the necessary ports (e.g., port 3000) in the Azure VM's network security group to allow incoming traffic.
+        
+3.  **Start the backend server using a process manager (e.g., PM2):**
+    
 
-### Code Splitting
+    ```
+    npm install -g pm2
+    pm2 start ./bin/www
+    ```
+    
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+### Frontend Deployment
 
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+1.  **Build the frontend for production:**
+   
+    
+    ```
+    npm run build
+    ```
+    
+2.  **Deploy the** `build` **folder to a static hosting service:**
+    
+    -   Use services like Netlify, Vercel, or GitHub Pages.
+        
+    -   Follow the specific instructions provided by the hosting service.
